@@ -1,0 +1,407 @@
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Reloading Tracker - Beta</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <style>
+        #banner {
+            padding: 6em 0 4em 0;
+        }
+
+        .inner h2 {
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        /* "Chytrý" Spotlight Layout - robustní flexbox bez překrývání */
+        .spotlight {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .spotlight .image {
+            flex: 1 1 50% !important;
+            max-width: 50% !important;
+            width: 50% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            height: auto;
+            order: 1 !important;
+        }
+
+        .spotlight .content {
+            flex: 1 1 50% !important;
+            max-width: 50% !important;
+            width: 50% !important;
+            padding: 4em !important;
+            margin: 0 !important;
+            order: 2 !important;
+            text-align: left;
+        }
+
+        .spotlight:nth-child(2n) {
+            flex-direction: row-reverse !important;
+        }
+
+        /* Obrázky se přizpůsobí kontejneru a nikdy neutečou */
+        .spotlight .image img {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            max-height: 70vh !important;
+            object-fit: contain !important;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+        }
+
+        .spotlight .image a {
+            display: block;
+            width: 100%;
+            padding: 2em;
+            /* Prostor kolem obrázku uvnitř kontejneru */
+        }
+
+        /* Mobilní zobrazení - skládání pod sebe */
+        @media screen and (max-width: 980px) {
+            .spotlight {
+                flex-direction: column !important;
+            }
+
+            .spotlight .image,
+            .spotlight .content {
+                flex: 1 1 100% !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                padding: 2em !important;
+            }
+
+            .spotlight .content {
+                text-align: center;
+            }
+        }
+
+        /* GLightbox zoom kurzor */
+        .glightbox {
+            cursor: zoom-in;
+        }
+    </style>
+</head>
+
+<body class="landing is-preload">
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+        <!-- Banner -->
+        <section id="banner">
+            <div class="inner">
+                <h2>Reloading Tracker</h2>
+                <p>Evidence a analýza střelby.</p>
+                <ul class="actions special">
+                    <li><a href="https://reloading-tracker.cz" class="button primary">Webová aplikace</a></li>
+                    <li><a href="https://reloading-tracker.canny.io/" class="button">Feedback / Canny</a></li>
+                </ul>
+            </div>
+            <a href="#one" class="more scrolly">Více informací</a>
+        </section>
+
+        <!-- Intro -->
+        <section id="one" class="wrapper style1 special">
+            <div class="inner">
+                <header class="major">
+                    <h2>Informace pro testery</h2>
+                    <p>Ahoj, projekt se rozrůstá a uvítal bych pomoc s testováním.</p>
+                </header>
+                <div class="row gtr-150 text-left" style="text-align: left;">
+                    <div class="col-4 col-12-medium">
+                        <h3>Co potřebuji</h3>
+                        <ul>
+                            <li>Zpětnou vazbu na ovládání.</li>
+                            <li>Hlášení chyb (bugů).</li>
+                            <li>Nápady na reálně užitečné funkce.</li>
+                        </ul>
+                    </div>
+                    <div class="col-4 col-12-medium">
+                        <h3>Co nabízím</h3>
+                        <ul>
+                            <li>Premium účet do Shooting Companion.</li>
+                            <li>500MB místa pro data na backendu pro testovací účely.</li>
+                            <li>Možnost získat licenci pro vlastní Docker instanci (self-hosted).</li>
+                        </ul>
+                    </div>
+                    <div class="col-4 col-12-medium">
+                        <h3>Koho hledám</h3>
+                        <ul>
+                            <li>Aktivní střelce a přebíječe.</li>
+                            <li>Lidi, co chtějí mít data v pořádku.</li>
+                            <li>Trpělivé testery.</li>
+                        </ul>
+                    </div>
+                    <div class="col-4 col-12-medium">
+                        <h3>Koho nehledám</h3>
+                        <ul>
+                            <li>Lidi, co čekají hotový korporátní produkt.</li>
+                            <li>Lidi bez pochopení pro ranou fázi vývoje.</li>
+                        </ul>
+                    </div>
+                    <div class="col-4 col-12-medium">
+                        <h3>Co očekávat</h3>
+                        <ul>
+                            <li>Občas něco spadne nebo nepojede.</li>
+                            <li>Design se může ze dne na den změnit.</li>
+                            <li>Osobní přístup a rychlou komunikaci.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features (Spotlights) -->
+        <section id="two" class="wrapper alt style2">
+
+            <!-- Modular Dashboard -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="assets/gifs/animated_dashboard.gif" class="glightbox">
+                        <img src="assets/gifs/animated_dashboard.gif" alt="Modulární dashboard" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Modulární dashboard</h2>
+                    <p>Můžete si nastavit kombinaci widgetů která vám vyhovuje. Mějte pod kontrolou sklad, poslední
+                        aktivity nebo statistiky přesně tak, jak potřebujete.</p>
+                </div>
+            </section>
+
+            <!-- Web Analysis -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="assets/gifs/ammo_test.gif" class="glightbox">
+                        <img src="assets/gifs/ammo_test.gif" alt="Analýza střeliva" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Analýza střeliva na webu</h2>
+                    <p>Porovnávání různých laborací v rámci jedné zbraně. Na velkém monitoru vidíte všechny detaily,
+                        které vám na střelnici mohly uniknout.</p>
+                </div>
+            </section>
+
+            <!-- Mobile Analysis -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="images/app_target_analysis.png" class="glightbox">
+                        <img src="images/app_target_analysis.png" alt="Shooting Companion Analysis" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Shooting Companion v terénu</h2>
+                    <p>Přímo na střelnici si mobilem vyfotíte terč a aplikace automaticky rozpozná zásahy a spočítá
+                        rozptyl v MOA.</p>
+                </div>
+            </section>
+
+            <!-- Web Inventory -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="assets/gifs/naboje_sklad.gif" class="glightbox">
+                        <img src="assets/gifs/naboje_sklad.gif" alt="Sklad přebíjení" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Sklad komponentů</h2>
+                    <p>Mějte přehled o zásobách prachu, střel, zápalek a nábojnic. Web vám spočítá, kolik nábojů ještě
+                        můžete přebít.</p>
+                </div>
+            </section>
+
+            <!-- Mobile Sync -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="images/app_sync_result.png" class="glightbox">
+                        <img src="images/app_sync_result.png" alt="Cloud Sync" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Cloudová synchronizace</h2>
+                    <p>Jedním tlačítkem v mobilu pošlete výsledky ze střelnice do cloudu. Data jsou okamžitě dostupná
+                        pro hloubkovou analýzu na webu.</p>
+                </div>
+            </section>
+
+            <!-- Web Weapons -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="assets/gifs/guns.gif" class="glightbox">
+                        <img src="assets/gifs/guns.gif" alt="Seznam zbraní" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Deník vašich zbraní</h2>
+                    <p>Historie nástřelu, čištění a údržby. Vše v jednom přehledném seznamu přístupném odkudkoliv.</p>
+                </div>
+            </section>
+
+            <!-- Mobile Analysis Detail -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="images/app_analysis_detail.png" class="glightbox">
+                        <img src="images/app_analysis_detail.png" alt="Analýza detail" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Okamžitá data na čáře</h2>
+                    <p>Zpětná vazba ihned po dostřílení skupiny. Posun bodu zásahu, vertikální a horizontální rozptyl
+                        pro okamžitou korekci.</p>
+                </div>
+            </section>
+
+            <!-- Web Load Dev -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="images/web_load_development.png" class="glightbox">
+                        <img src="images/web_load_development.png" alt="Vývoj navážky" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Vývoj navážky</h2>
+                    <p>Sledování testovacích sérií, grafy tlaků a rychlostí. Najděte tu nejlepší kombinaci pro vaši
+                        hlaveň.</p>
+                </div>
+            </section>
+
+            <!-- Web Scatter Plot -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="images/web_scatter_plot.png" class="glightbox">
+                        <img src="images/web_scatter_plot.png" alt="Scatter Plot" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Vizuální porovnání soustřelů</h2>
+                    <p>Interaktivní scatter ploty pro srovnání přesnosti různých navážek nebo typů střeliva přes sebe.
+                    </p>
+                </div>
+            </section>
+
+            <!-- App Weapons -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="images/app_weapon_list.png" class="glightbox">
+                        <img src="images/app_weapon_list.png" alt="Mobile Weapons" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Vybavení vždy u sebe</h2>
+                    <p>Mobilní deník zbraní umožňuje rychlou kontrolu nástřelu nebo parametrů střeliva přímo na palebné
+                        čáře.</p>
+                </div>
+            </section>
+
+            <!-- Web Statistics -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="images/web_statistics.png" class="glightbox">
+                        <img src="images/web_statistics.png" alt="Webové statistiky" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Statistiky a náklady</h2>
+                    <p>Počítejte si cenu za výstřel a sledujte své střelecké trendy v čase. Kolik ran jste letos reálně
+                        vystříleli?</p>
+                </div>
+            </section>
+
+            <!-- App Settings -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="images/app_sync_settings.png" class="glightbox">
+                        <img src="images/app_sync_settings.png" alt="Sync Settings" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Jednoduché nastavení</h2>
+                    <p>Propojení s Reloading Tracker portálem pomocí API tokenu. Bezpečné a rychlé.</p>
+                </div>
+            </section>
+
+            <!-- Self Hosting -->
+            <section class="spotlight">
+                <div class="image">
+                    <a href="images/web_dashboard.png" class="glightbox">
+                        <img src="images/web_dashboard.png" alt="Self Hosting Demo" />
+                    </a>
+                </div>
+                <div class="content">
+                    <h2>Vlastní server? Žádný problém.</h2>
+                    <p>Pro ty, kteří chtějí mít data u sebe. Připravený Docker instalátor, se kterým máte vlastní
+                        instanci Reloading Trackeru nahozenou do 30 sekund. Stačí spustit jeden skript.</p>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- CTA -->
+        <section id="cta" class="wrapper style4">
+            <div class="inner">
+                <header>
+                    <h2>Odkazy</h2>
+                </header>
+                <ul class="actions special">
+                    <li><a href="https://reloading-tracker.cz" class="button wide primary">Vstoupit na web</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=cz.aleskozubik.shootingcompanion"
+                            class="button wide">Google Play</a></li>
+                    <li><a href="https://apps.apple.com/cz/app/shooting-companion/id6748056517" class="button wide">App
+                            Store</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="copyright">
+                <li>&copy; Aleš Kozubík</li>
+                <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            </ul>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script type="text/javascript">
+        const lightbox = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true,
+            zoomable: true
+        });
+    </script>
+
+</body>
+
+</html>
