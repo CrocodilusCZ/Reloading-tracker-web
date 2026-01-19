@@ -180,7 +180,9 @@
             <section class="spotlight">
                 <div class="image">
                     <a href="assets/gifs/animated_dashboard.gif" class="glightbox">
-                        <img src="assets/gifs/animated_dashboard.gif" alt="Modulární dashboard" />
+                        <img src="images/web_dashboard.png" data-gif="assets/gifs/animated_dashboard.gif"
+                            data-static="images/web_dashboard.png" class="gif-lazy" loading="lazy"
+                            alt="Modulární dashboard" />
                     </a>
                 </div>
                 <div class="content">
@@ -194,7 +196,9 @@
             <section class="spotlight">
                 <div class="image">
                     <a href="assets/gifs/ammo_test.gif" class="glightbox">
-                        <img src="assets/gifs/ammo_test.gif" alt="Analýza střeliva" />
+                        <img src="images/web_analysis_overview.png" data-gif="assets/gifs/ammo_test.gif"
+                            data-static="images/web_analysis_overview.png" class="gif-lazy" loading="lazy"
+                            alt="Analýza střeliva" />
                     </a>
                 </div>
                 <div class="content">
@@ -222,7 +226,9 @@
             <section class="spotlight">
                 <div class="image">
                     <a href="assets/gifs/naboje_sklad.gif" class="glightbox">
-                        <img src="assets/gifs/naboje_sklad.gif" alt="Sklad přebíjení" />
+                        <img src="images/web_reloading_inventory.png" data-gif="assets/gifs/naboje_sklad.gif"
+                            data-static="images/web_reloading_inventory.png" class="gif-lazy" loading="lazy"
+                            alt="Sklad přebíjení" />
                     </a>
                 </div>
                 <div class="content">
@@ -250,7 +256,9 @@
             <section class="spotlight">
                 <div class="image">
                     <a href="assets/gifs/guns.gif" class="glightbox">
-                        <img src="assets/gifs/guns.gif" alt="Seznam zbraní" />
+                        <img src="images/web_weapon_list.png" data-gif="assets/gifs/guns.gif"
+                            data-static="images/web_weapon_list.png" class="gif-lazy" loading="lazy"
+                            alt="Seznam zbraní" />
                     </a>
                 </div>
                 <div class="content">
@@ -400,6 +408,26 @@
             loop: true,
             zoomable: true
         });
+
+        // GIF Optimization: Play only when visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const img = entry.target;
+                if (entry.isIntersecting) {
+                    // Switch to GIF when visible
+                    if (img.src.indexOf(img.dataset.gif) === -1) {
+                        img.src = img.dataset.gif;
+                    }
+                } else {
+                    // Switch to static image when hidden
+                    if (img.src.indexOf(img.dataset.static) === -1) {
+                        img.src = img.dataset.static;
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.gif-lazy').forEach(img => observer.observe(img));
     </script>
 
 </body>
